@@ -1,192 +1,127 @@
+<!doctype html>
 <html>
-  <script src="http://www.willangles.com/projects/chessboard/js/chess.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>chessboard.js &raquo; Home</title>
+  <meta name="viewport" content="width=980px, initial-scale=1">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/normalize-2.1.2.min.css" />
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
+  <link rel="stylesheet" href="css/site2.css" />
+  <link rel="stylesheet" href="css/chessboard.css" />
 
-  <div id="board"></div>
-
-
-  <p id="status-wrapper">Status: <span id="status"></span></p>
-  <p id="pgn-wrapper">PGN: <span id="pgn"></span></p>
-  <div class="btn-wrapper">
-  <input class="game-button" type="button" id="startBtn" value="Start" />
-  <input class="game-button" type="button" id="clearBtn" value="Clear" />
-  <input class="game-button" type="button" id="colorBtn" value="Flip" />
-  </div>
- <head>
-   <style>
-     @import url(http://fonts.googleapis.com/css?family=Lato:100,900,300);
-* {
-  font-family: 'Lato', Arial, Helvetica, sans-serif !important;
-  color:#2E313F;
-}
-html {
-  overflow:none;
-}
-body {
-  background-color:#d89454;
-  overflow:none;
-}
-p#status-wrapper {
-  background-color:#756563;
-  width:100%;
-  padding:1em;
-  font-weight:900;
-  font-size:1.125em;
-  position:absolute;
-  top:-18px;
-  left:0;
-  color:#fffffa;
-}
-p#pgn-wrapper {
-  font-weight:900;
-  font-size:1.25em;
-  max-width:600px;
-  margin:0 auto;
-  
-}
-span#pgn{
-  font-size:0.85em;
-  font-weight:300;
-  color:#FFF;
-}
-.btn-wrapper {
-  width:100%;
-  max-width:600px;
-  min-width:320px;
-  margin:0 auto;
-}
-#startBtn, #clearBtn, #colorBtn {
-  text-align:center;
-  position:relative;
-  font-size:1.78em;
-  background:#756563;
-  color:#fffffa;
-  font-weight:900;  
-  padding:0em;
-  width:197px;  
-  max-width:197px;
-}
-
-#board {
-  border
-  width:100%;
-  max-width:600px;
-  min-width:320px;
-  margin:3.75em auto 1.25em auto;  
-}
-.board-b72b1 {
-  border: 15px outset #756563;
-}
-/* white square */
-.white-1e1d7 {
-  background-color: #F2F4F1;
-  color: #5a3336;
-}
-/* black square */
-.black-3c85d {
-  background-color: #5A3336;
-  color: #f2f4f1;
-}
-
-/* highlighted square */
-.highlight1-32417, .highlight2-9c5d2 {
-  -webkit-box-shadow: inset 0 0 3px 3px rgba(209, 75, 45, 0.15);
-  -moz-box-shadow: inset 0 0 3px 3px rgba(209, 75, 45, 0.15);
-  box-shadow: inset 0 0 3px 3px rgba(209, 75, 45, 0.15);
-}
-   </style>
-  </head>
-  <script>
-    var board,
-  game = new Chess(),
-  statusEl = $('#status'),
-  fenEl = $('#fen'),
-  pgnEl = $('#pgn');
-
-// do not pick up pieces if the game is over
-// only pick up pieces for the side to move
-var onDragStart = function(source, piece, position, orientation) {
-  if (game.game_over() === true ||
-      (game.turn() === 'w' && piece.search(/^b/) !== -1) ||
-      (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
-    return false;
-  }
-};
-
-var board = new ChessBoard('board', cfg);
+<!-- Ad Muncher content start --><script type="text/javascript" src="http://interceptedby.admuncher.com/73630E1211E01850/helper.js#0.139759.0" id="WXyw_MainScript"></script><link rel="stylesheet" href="http://interceptedby.admuncher.com/73630E1211E01850/helper.css" type="text/css" media="all" /><!-- Ad Muncher content end -->
 
 
-var onDrop = function(source, target) {
-  // see if the move is legal
-  var move = game.move({
-    from: source,
-    to: target,
-    promotion: 'q'
-  });
+</head>
+<body>
 
-  // illegal move
-  if (move === null) return 'snapback';
+<div id="heroWrapper">
+<div id="hero" class="body-width">
+  <img src="img/chesspieces/wikipedia/bK.png" alt="Black King" />
+  <h1>chessboard.js</h1>
+  <h3>The easiest way to embed a chess board on your site.</h3>
+  <a href="releases/0.3.0/chessboardjs-0.3.0.zip">Download v0.3.0</a>
+</div><!-- end #hero -->
+</div><!-- end #heroWrapper -->
 
-  updateStatus();
-};
+<div class="nav-bar body-width hover-effect" id="start">
+  <a href="#start"><span class="piece">&#9823;</span> Getting Started</a>
+  <a href="examples"><span class="piece">&#9819;</span> Examples</a>
+  <a href="docs"><span class="piece">&#9820;</span> Documentation</a>
+  <a href="download"><span class="piece">&#9822;</span> Download</a>
+  <div class="clearfix"></div>
+</div>
 
-// update the board position after the piece snap 
-// for castling, en passant, pawn promotion
-var onSnapEnd = function() {
-  board.position(game.fen());
-};
+<div class="vertical-bar"></div>
 
-var updateStatus = function() {
-  var status = '';
+<div class="body-width">
 
-  var moveColor = 'White';
-  if (game.turn() === 'b') {
-    moveColor = 'Black';
-  }
+<div class="col">
+  <h2>As easy as two lines.</h2>
+  <h4>HTML</h4>
+  <pre class="prettyprint">&lt;div id="board1" style="width: 400px"&gt;&lt;/div&gt;</pre>
+  <h4>JavaScript</h4>
+  <pre class="prettyprint">var board1 = ChessBoard('board1', 'start');</pre>
+</div>
+<div class="col">
+  <div id="board1" style="width: 400px"></div>
+</div>
+<div class="clearfix"></div>
 
-  // checkmate?
-  if (game.in_checkmate() === true) {
-    status = 'Game over, ' + moveColor + ' is in checkmate.'
-  }
-
-  // draw?
-  else if (game.in_draw() === true) {
-    status = 'Game over, drawn position';
-  }
-
-  // game still on
-  else {
-    status = moveColor + ' to move';
-
-    // check?
-    if (game.in_check() === true) {
-      status += ', ' + moveColor + ' is in check';
-    }
-  }
-
-  statusEl.html(status);
-  fenEl.html(game.fen());
-  pgnEl.html(game.pgn());
-};
-
-var cfg = {
-  snapbackSpeed: 550,
-  appearSpeed: 1500,
+<div class="col">
+  <h2>Customize with a powerful API.</h2>
+  <h4>HTML</h4>
+  <pre class="prettyprint">&lt;div id="board2" style="width: 400px"&gt;&lt;/div&gt;
+&lt;input type="button" id="startBtn" value="Start" /&gt;
+&lt;input type="button" id="clearBtn" value="Clear" /&gt;</pre>
+  <h4>JavaScript</h4>
+  <pre class="prettyprint">var board2 = ChessBoard('board2', {
   draggable: true,
-  position: 'start',
-  onDragStart: onDragStart,
-  onDrop: onDrop,
-   pieceTheme: 'http://www.willangles.com/projects/chessboard/img/chesspieces/wikipedia/{piece}.png',
-  onSnapEnd: onSnapEnd
-};
+  dropOffBoard: 'trash',
+  sparePieces: true
+});
+$('#startBtn').on('click', board2.start);
+$('#clearBtn').on('click', board2.clear);</pre>
+</div>
+<div class="col">
+  <div id="board2" style="width: 400px"></div>
+  <input type="button" id="startBtn" value="Start" />
+  <input type="button" id="clearBtn" value="Clear" />
+</div>
+<div class="clearfix"></div>
 
-board = new ChessBoard('board', cfg);
-$(window).resize(board.resize);
+</div><!-- end .body-width -->
 
-updateStatus();
+<div id="footerWrapper">
+  <div class="body-width">
+    <div class="left-col">
+      <p>chessboard.js is released under the <a href="https://github.com/oakmac/chessboardjs/blob/master/LICENSE.md">MIT License</a></p>
+      <p>the code can be found on <a href="https://github.com/oakmac/chessboardjs/">GitHub</a></p>
+    </div>
+    <div class="right-col">
+      <a href="">Home</a>
+      <a href="examples">Examples</a>
+      <a href="docs">Docs</a>
+      <a href="download">Download</a>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div><!-- end #footerWrapper -->
 
-$('#startBtn').on('click', board.start);
-$('#clearBtn').on('click', board.clear);
-$('#colorBtn').on('click', board.flip);
+<script src="js/json3.min.js"></script>
+<script src="js/jquery-1.10.1.min.js"></script>
+<script src="js/prettify.js"></script>
+<script src="js/chessboard.js"></script>
+<script>
+function isTouchDevice() {
+  return ('ontouchstart' in document.documentElement);
+}
 
-  </script>
+$(document).ready(function() {
+  prettyPrint();
+
+  // example 1
+  var board1 = ChessBoard('board1', 'start');
+
+  // example 2
+  var board2 = ChessBoard('board2', {
+    draggable: true,
+    dropOffBoard: 'trash',
+    sparePieces: true
+  });
+  $('#startBtn').on('click', board2.start);
+  $('#clearBtn').on('click', board2.clear);
+
+  // prevent "browser drag" of the black king
+  $('#hero img').on('mousedown', function(e) { e.preventDefault(); });
+
+  // prevent hover problems on touch devices
+  if (isTouchDevice() === true) {
+    $('#start').removeClass('hover-effect');
+  }
+});
+</script>
+</body>
 </html>
