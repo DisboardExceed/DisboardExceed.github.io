@@ -1,2 +1,2 @@
 # DisboardExceed.github.io
-DisboardExceed is Tet
+DisboardExceed's Land ^u^
